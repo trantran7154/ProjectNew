@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Product from '../views/product/Index.vue'
+import Login from '../views/user/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ const routes: Array<RouteConfig> = [
     path: '/product',
     name: 'product',
     component: Product
+  },
+  {
+    path: '/user/login',
+    name: 'login',
+    component: Login
   },
 ]
 

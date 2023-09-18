@@ -9,6 +9,10 @@ const Schema = new mongoose.Schema({
         type: String,
         default: ''
     },
+    isLogin: {
+        type: Boolean,
+        default: false
+    },
     isVerify: {
         type: Boolean,
         default: false
@@ -16,6 +20,9 @@ const Schema = new mongoose.Schema({
     otp: {
         type: String,
         default: ''
+    },
+    logOutAt: {
+        type: Date, require: new Date(Date.now())
     },
     loginAt: {
         type: Date, require: new Date(Date.now())

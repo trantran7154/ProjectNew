@@ -44,6 +44,7 @@ class Service {
 
             // Lưu một số thông tin
             user.loginAt = new Date(Date.now());
+            user.isLogin = true;
 
             // Tạo jwt
             const payload = {
@@ -108,6 +109,42 @@ class Service {
             return { token }
         } catch (error) {
             console.log(error);
+            this.setStatus(500);
+            this.setMessage("Connection error, please try again later !");
+            return false;
+        }
+    }
+
+    public async getProfile(user: any) {
+        try {
+            const userCall: any = await userModel.findById(user._id);
+
+            this.setStatus(200);
+            this.setMessage("!");
+
+            return userCall;
+        } catch (error) {
+            this.setStatus(500);
+            this.setMessage("Connection error, please try again later !");
+            return false;
+        }
+    }
+
+    public async logOut(user: any, body: any) {
+        try {
+            await userModel.findByIdAndUpdate(user._id, {
+                isLogin: false,
+                logOutAt: new Date(Date.now()),
+                token: "",
+                refreshToken: ""
+            });
+
+            this.setStatus(200);
+            this.setMessage("Dang xuat thanh cong!");
+            return { 
+                token: "" 
+            };
+        } catch (error) {
             this.setStatus(500);
             this.setMessage("Connection error, please try again later !");
             return false;
