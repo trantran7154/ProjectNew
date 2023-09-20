@@ -5,7 +5,7 @@ import '../../middleware/passport';
 const router = express.Router();
 
 router.post(`/api/user/v1/user`, controller.register);
-router.patch(`/api/user/v1/user`, controller.login);
+router.post(`/api/user/v1/login`, controller.login);
 router.get(`/api/user/v1/get-profile`, passport.authenticate('jwt', {
     session: false
 }), controller.getProfile);

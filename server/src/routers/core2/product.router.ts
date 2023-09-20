@@ -1,5 +1,8 @@
+import passport from "passport";
 import express from 'express';
 import controller from '../../controllers/core2/product.controller';
+import '../../middleware/passport';
+
 const router = express.Router();
 
 router.get(`/api/product/v1/product`, controller.getAllProduct);

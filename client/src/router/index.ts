@@ -25,11 +25,6 @@ const routes: Array<RouteConfig> = [
     name: 'product',
     component: Product
   },
-  {
-    path: '/user/login',
-    name: 'login',
-    component: Login
-  },
 ]
 
 const router = new VueRouter({

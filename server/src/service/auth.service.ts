@@ -16,7 +16,12 @@ class Service {
 
     public async login(body: any) {
         try {
-            const { email, password } = body;
+            type bodyOBJ = {
+                email: string,
+                password: string
+            }
+
+            const { email, password } = body as bodyOBJ;
 
             const user = await userModel.findOne({
                 email: email,
@@ -141,8 +146,8 @@ class Service {
 
             this.setStatus(200);
             this.setMessage("Dang xuat thanh cong!");
-            return { 
-                token: "" 
+            return {
+                token: ""
             };
         } catch (error) {
             this.setStatus(500);
